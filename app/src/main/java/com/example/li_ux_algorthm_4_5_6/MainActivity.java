@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.TextViewCompat;
 
 import com.example.li_ux_algorthm_4_5_6.bean.circle;
 import com.example.li_ux_algorthm_4_5_6.bean.Rectangle;
@@ -46,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 65; i < 76; i++) {
             stu_list.add(new Student(i - 64, String.valueOf((char) i), i - 50, i + 2));
         }
-        exam4_question1(2);
-        exam4_question2();
-        exam4_question3();
-        exam5_question1(100, 1000);
-        exam5_question2();
-        exam5_question3();
-        exam6_question1();
-        exam6_question2();
+//        exam4_question1(2);
+//        exam4_question2();
+//        exam4_question3();
+        exam5_question1();
+//        exam5_question2();
+//        exam5_question3();
+//        exam6_question1();
+//        exam6_question2();
         exam6_question3_TV.setText("你的月薪是4000元，应打税" + exam6_question3(4000) + "元");
     }
 
@@ -108,25 +109,36 @@ public class MainActivity extends AppCompatActivity {
         exam4_question3_TV.setText(str + "");
     }
 
-    public void exam5_question1(int start, int end) {
-        //质数是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。    168
+    public void exam5_question1() {
         List<Integer> p_list = new ArrayList<>();
-        List<Integer> f_list = new ArrayList<>();
-        for (int i = 3; i <= end; i += 2) {
-            f_list.add(i);
-            for (int j : f_list) {
-                if (i % j == 0){
-                    p_list.add(i);
+        for (int i = 100; i <=1000; i++)
+        {
+            boolean isSushu = true;
+            for (int j = 2; j < i-1; j++)
+            {
+                if (i%j == 0) {
+                    isSushu = false;
                     break;
                 }
-                else
-                    continue;
+
+            }
+            if (isSushu==true) {
+               System.out.println(i);
+                p_list.add(i);
             }
         }
-        Log.e("asd", p_list.size() + "");
-        Log.e("asd", f_list.toString());
-        Log.e("asd", p_list.toString());
+
+        HashMap<Integer, Integer> sister_p_list = new HashMap<>();
+        for (int i = 1; i < p_list.size(); i++) {
+            if (p_list.get(i) - p_list.get(i-1) == 2){
+                sister_p_list.put(p_list.get(i), p_list.get(i-1));
+            }
+        }
+        
+        exam5_question1_TV.setText("100到1000的姐妹素数是："+sister_p_list.toString());
     }
+
+
 
     public void exam5_question2 () {
         int result1 = 0;
