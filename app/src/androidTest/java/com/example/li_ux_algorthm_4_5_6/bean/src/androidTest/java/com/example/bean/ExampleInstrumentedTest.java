@@ -1,3 +1,4 @@
+package com.example.li_ux_algorthm_4_5_6.bean.src.androidTest.java.com.example.bean;
 
 import android.content.Context;
 
