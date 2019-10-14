@@ -1,4 +1,3 @@
-package com.example.bean;
 
 import android.content.Context;
 
