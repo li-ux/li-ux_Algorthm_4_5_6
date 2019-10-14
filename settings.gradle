@@ -1,0 +1,2 @@
+include ':app', ':bean'
+rootProject.name='li-ux_Algorthm_4_5_6'
